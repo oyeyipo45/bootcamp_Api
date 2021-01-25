@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 connectDB = async () => {
   const real = process.env.MONGO_URI;
@@ -6,12 +6,12 @@ connectDB = async () => {
 
   try {
     const connect = await mongoose.connect(
-      process.env.NODE_ENV === "test" ? test : real,
+      process.env.NODE_ENV === 'test' ? test : real,
       {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
       }
     );
 
