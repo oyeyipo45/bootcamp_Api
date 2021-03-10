@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 connectDB = async () => {
   const real = process.env.MONGO_URI;
@@ -6,7 +6,7 @@ connectDB = async () => {
 
   try {
     const connect = await mongoose.connect(
-      process.env.NODE_ENV === 'test' ? test : real,
+      process.env.NODE_ENV === "test" ? test : real,
       {
         useUnifiedTopology: true,
         useNewUrlParser: true,
@@ -18,8 +18,6 @@ connectDB = async () => {
     console.log(`MongoDB connected: ${connect.connection.host}`.cyan.underline);
   } catch (error) {
     console.error(`Error: ${error.message}`.red.underline.bold);
-    // close server & exit process
-    server.close(() => process.exit(1));
   }
 };
 
