@@ -6,6 +6,7 @@ const fileupload = require("express-fileupload");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
+const cookieParser = require('cookie-parser')
 //load env vars
 dotenv.config({ path: "./config/config.env" });
 
@@ -22,6 +23,9 @@ const app = express();
 
 //body parser
 app.use(express.json());
+
+//cookie parser
+app.use(cookieParser());
 
 //middleware
 if (process.env.NODE_ENV === "development") {
@@ -41,7 +45,7 @@ app.use("/api/v1/auth", auth);
 //error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
 app.listen(PORT, () =>
   console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)

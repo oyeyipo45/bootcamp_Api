@@ -4,6 +4,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../utils/async.js");
 const geocoder = require("../utils/geocoder");
 
+
 // desc          Get all bootcamps
 // @route        GET /api/v1/bootcamps
 // @access       Public
@@ -118,7 +119,7 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Please upload a file`, 400));
   }
   const file = req.files.files;
-   //make sure  the image is a photo
+  //make sure  the image is a photo
   if (!file.mimetype.startsWith("image")) {
     return next(new ErrorResponse("Please upload an image file", 400));
   }
@@ -135,7 +136,7 @@ exports.bootcampPhotoUpload = asyncHandler(async (req, res, next) => {
     if (err) {
       console.log(err);
       return next(new ErrorResponse("Problem with file upload", 500));
-    }  
+    }
 
     await Bootcamp.findByIdAndUpdate(req.params.id, { photo: file.name });
 
