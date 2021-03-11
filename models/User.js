@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+mongoose.Promise = global.Promise;
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,

@@ -1,27 +1,31 @@
 const mongoose = require('mongoose');
 const Bootcamp = require('./Bootcamp');
+
+mongoose.Promise = global.Promise;
+
+
 const CourseSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
-    required: [true, 'Please add a course title'],
+    required: [true, "Please add a course title"],
   },
   description: {
     type: String,
-    required: [true, 'Please add a description'],
+    required: [true, "Please add a description"],
   },
   weeks: {
     type: String,
-    requires: [true, 'Please add a number of weeks'],
+    requires: [true, "Please add a number of weeks"],
   },
   tuition: {
     type: Number,
-    required: [true, 'Please add a tution cost'],
+    required: [true, "Please add a tution cost"],
   },
   minimumSkill: {
     type: String,
-    required: [true, 'Please add a minumun skill'],
-    enum: ['beginner', 'intermediate', 'advanced'],
+    required: [true, "Please add a minumun skill"],
+    enum: ["beginner", "intermediate", "advanced"],
   },
   scholarshipAvailable: {
     type: Boolean,
@@ -33,7 +37,12 @@ const CourseSchema = new mongoose.Schema({
   },
   bootcamp: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Bootcamp',
+    ref: "Bootcamp",
+    required: true,
+  },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
     required: true,
   },
 });
