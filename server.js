@@ -7,6 +7,7 @@ const connectDB = require("./config/db");
 const colors = require("colors");
 const errorHandler = require("./middleware/error");
 const cookieParser = require('cookie-parser')
+
 //load env vars
 dotenv.config({ path: "./config/config.env" });
 
